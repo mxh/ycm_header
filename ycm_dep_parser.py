@@ -7,7 +7,7 @@ def parse_dep_file(filename):
     lines = [line.rstrip() for line in f.readlines()]
     lines = "".join(lines)
     lines = lines.replace(" \\ ", " ")
-    cpp_file = re.search(r"cpp.o: (.*?) ", lines).group(1)
+    cpp_file = re.search(r"(cpp|cc|c|cxx).o: (.*?) ", lines).group(2)
     dependencies = lines.split(" ")[2:]
 
     return (cpp_file, dependencies)
